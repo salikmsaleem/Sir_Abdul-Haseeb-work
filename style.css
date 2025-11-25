@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+}
+.myform{
+    margin: 10px 100px ;
+background: aqua;
+height: 180px;
+width: 400px;
+padding: 50px;
+border: 3px solid white;
+box-shadow:1px 1px 5px 4px #ffffff6b ;
+border-radius: 20px;
+}
+input{
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+    margin: 5px;
+
+}
+button {
+    height: 30px;
+    width: 150px;
+    border-radius: 10px;
+    margin: 10px  100px;
+
+}
