@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="to-do" onsubmit="">
+        <button type="button" onclick="func()" >submit</button>
+    </form>
+    <p id="list"></p>
+    <script>
+        let arr = [];
+        function func(){
+            let i = document.getElementById('to-do').value
+            arr.push(i);
+            console.log(arr);
+            for (let i = 0; i < arr.length; i++) {
+             document.getElementById('list').innerHTML +="</br>" + arr[i];
+                
+            }
+            
+            // document.getElementById('list').innerHTML += arr[0] + "<br>";
+            
+            
+             
+        }
+
+    </script>
+</body>
+</html>
