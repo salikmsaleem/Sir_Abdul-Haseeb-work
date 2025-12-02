@@ -1,0 +1,84 @@
+<!-- SUGGESTIONS -->
+<!-- 1. Please make separate files for styling and javascript -->
+<!-- 2. Use arrow functions and name should be meaningful -->
+
+<!-- TASK -->
+<!-- Create todo list they are should be 'Add', 'Edit', and 'Delete' -->
+<!-- Also add validations in inputs -->
+
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style> 
+    /* 2 x n = 2 ...... n = 1*/ 
+    /* 2 x n = 4 ...... n = 2 */
+    /* 2 x n = 6 ....... n = 3 */
+     /* .list:nth-child(even) */
+     /* .list:nth-child(2n) */
+
+        .list:nth-child(2n - 1) {
+            background: aqua !important;
+        }
+        .list {
+            padding: 10px;
+            border-radius: 6px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        /* .even {
+            background: aqua !important;
+        }
+        .odd, .even {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        } */
+    </style>
+ </head>
+ <body>
+    <input type="text" id="myinput">
+    <button onclick="main()">Submit</button>
+
+    <div id="todo">
+    </div>
+
+    <script>
+        // block scope: let, const
+        // global scope: var
+
+        // topic: ternary operator 
+        // a > b ? "true aiega" : "false aiega"
+        // if (condition) {
+            
+        // } else {
+        // }
+        
+
+        let store = [];
+        const main = () => {
+            let input = document.getElementById("myinput").value;
+            
+            console.log(input);
+            let todo = document.getElementById("todo");
+
+            store.push(input);
+            todo.innerHTML = ""
+            for (let i = 0; i < store.length; i++) {
+                todo.innerHTML += `<div class='list'> <p>${store[i]}</p> <button onclick="remove(${i})">delete</button> </div>`
+                // todo.innerHTML += `<div class="${i % 2 == 0 ? 'odd' : 'even'}"> <p>${store[i]}</p>` + `<button>Delete ${i}</button> </div>`;
+            }
+            console.log(store)
+        }
+
+        function remove(i) {
+            console.log("REMOVE...." + i)
+        }
+    </script>
+ </body>
+ </html>
