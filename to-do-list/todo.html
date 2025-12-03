@@ -4,30 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .list{
+            display: flex;
+            gap: 50px;
+        }
+    </style>
 </head>
 <body>
-    <form>
-        <input type="text" id="to-do" onsubmit="">
-        <button type="button" onclick="func()" >submit</button>
-    </form>
-    <p id="list"></p>
+    
+    <input type="text" id="todo">
+    <button onclick="main()">Submit</button>
+    <div id="data"></div>
+
     <script>
-        let arr = [];
-        function func(){
-            let i = document.getElementById('to-do').value
-            arr.push(i);
-            console.log(arr);
-            for (let i = 0; i < arr.length; i++) {
-             document.getElementById('list').innerHTML +="</br>" + arr[i];
-                
-            }
+        let store = [];
+        const main = () => {
+            let input = document.getElementById("todo").value;
+            let data = document.getElementById("data");
             
-            // document.getElementById('list').innerHTML += arr[0] + "<br>";
-            
-            
-             
+
+            store.push(input);
+            data.innerHTML = "";
+           for (let i = 0; i < store.length; i++) {
+            data.innerHTML += `<div class='list'><p>${store[i]}</p><button onclick='remove(${i})'>Delete</button><button onclick='update(${i})'>Update</button></div>`;
+        }
+        console.log(store);
+    }
+    const remove = (i) =>{
+        store = store.filter((j,index) => i!=index)
+        data.innerHTML = "";
+        for (let i = 0; i < store.length; i++) {
+            data.innerHTML += `<div class='list'><p>${store[i]}</p><button onclick='remove(${i})'>Delete</button><button onclick='update(${i})'>Update</button></div>`;
+        }
+        console.log(store);
+        
+        
+    }
+    const update = (i) =>{
+        store[i] = prompt('Enter Value');
+        data.innerHTML = "";
+        for (let i = 0; i < store.length; i++) {
+            data.innerHTML += `<div class='list'><p>${store[i]}</p><button onclick='remove(${i})'>Delete</button><button onclick='update(${i})'>Update</button></div>`;
         }
 
-    </script>
+    }
+        
+        </script>
 </body>
 </html>
