@@ -1,55 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .list{
+        .list {
             display: flex;
             gap: 50px;
         }
     </style>
 </head>
+
 <body>
-    
+
     <input type="text" id="todo">
     <button onclick="main()">Submit</button>
     <div id="data"></div>
 
     <script>
-        let store = [];
+        
+
+            let store = [];
+            let data = document.getElementById("data");
+        const loop = (store) =>{
+            let html = "";
+            store.forEach((value,ind) => {
+                        html += `<div class='list'><p>${value}</p><button onclick='remove(${ind})'>Delete</button><button onclick='update(${ind})'>Update</button></div>`;
+                    });
+                    data.innerHTML = html;
+        }
+
         const main = () => {
             let input = document.getElementById("todo").value;
-            let data = document.getElementById("data");
             
+            const found = store.find(val=>val===input)!== undefined;
+            if(!found && input !== ""){
+                store.push(input);
+                data.innerHTML = "";
+                loop(store);
+            }else {alert((input === "") ? "Empty value not allowed" : "Already exist");
 
-            store.push(input);
-            data.innerHTML = "";
-           for (let i = 0; i < store.length; i++) {
-            data.innerHTML += `<div class='list'><p>${store[i]}</p><button onclick='remove(${i})'>Delete</button><button onclick='update(${i})'>Update</button></div>`;
+            };
+            
+            
+            
+            console.log(found);
+            console.log(store)
         }
-        console.log(store);
-    }
-    const remove = (i) =>{
-        store = store.filter((j,index) => i!=index)
-        data.innerHTML = "";
-        for (let i = 0; i < store.length; i++) {
-            data.innerHTML += `<div class='list'><p>${store[i]}</p><button onclick='remove(${i})'>Delete</button><button onclick='update(${i})'>Update</button></div>`;
-        }
-        console.log(store);
-        
-        
-    }
-    const update = (i) =>{
-        store[i] = prompt('Enter Value');
-        data.innerHTML = "";
-        for (let i = 0; i < store.length; i++) {
-            data.innerHTML += `<div class='list'><p>${store[i]}</p><button onclick='remove(${i})'>Delete</button><button onclick='update(${i})'>Update</button></div>`;
+        const remove = (i) =>{
+            store = store.filter((j,ind)=> i != ind );
+            loop(store);
+            console.log(store);
         }
 
-    }
+        const update = (i) =>{
+            let input = prompt('Enter A value');
+            const found = store.find(val=>val===input)!== undefined;
+            (!found && input !== "")? (() =>{
+                store[i] = input ;
+                data.innerHTML = "";
+                loop(store);
+
+            })():alert((input === "") ? "Empty value not allowed" : "Already exist");
+            // console.log(input);
+        }
+   
         
-        </script>
+
+
+
+
+
+
+
+
+
+    </script>
+
 </body>
+
 </html>
