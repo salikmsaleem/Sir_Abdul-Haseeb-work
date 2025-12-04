@@ -51,3 +51,6 @@ console.log(student['Ali']['city']);
 //updating nested object property
 student.Ali.age = 22;
 console.log(student.Ali.age);
+
+// more about objects will be discussed later in detail
+//Aaj k liye bas itna hi milty hen kisi next video

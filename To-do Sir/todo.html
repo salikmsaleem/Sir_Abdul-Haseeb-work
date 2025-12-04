@@ -35,7 +35,7 @@
         const main = () => {
             let input = document.getElementById("todo").value;
             
-            const found = store.find(val=>val===input)!== undefined;
+            const found = store.includes(input);
             if(!found && input !== ""){
                 store.push(input);
                 data.innerHTML = "";
@@ -57,7 +57,7 @@
 
         const update = (i) =>{
             let input = prompt('Enter A value');
-            const found = store.find(val=>val===input)!== undefined;
+            const found = store.includes(input);
             (!found && input !== "")? (() =>{
                 store[i] = input ;
                 data.innerHTML = "";
