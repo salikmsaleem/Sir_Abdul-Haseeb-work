@@ -87,3 +87,15 @@ console.log(employees[0].age); //21
             }
             console.log(array);
             
+        // 6> push another object in array
+            array.push({name: "zafar", age: 22, city: "lahore"});
+            console.log(array);
+            // 7> outside loop merge two objects in array
+            const array1 = [
+                {name: "salik", age: 20, city: "karachi"},
+                {name:"abdul rehman", age:19, city: "karachi"}
+            ]
+            const newObj = {caste: "mughal", country: "pakistan"};
+            array1[0] = {...array1[0], ...newObj}
+           
+            console.log(array1);git
