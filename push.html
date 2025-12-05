@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="mytable(3)">For Loop</button>
+    <div id="data"></div>
+    
+
+    <script>
+        // write an function that return tables you insert...
+        const mytable = (a) => {
+            let data = document.getElementById('data');
+        
+           
+            let store = [];
+            // 
+            for (let i = 1; i < 11; i++) {
+                store.push(i * a);
+            }
+
+            console.log(store)
+
+        }
+
+    </script>
+</body>
+</html>

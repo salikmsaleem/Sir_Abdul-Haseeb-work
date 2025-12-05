@@ -69,5 +69,21 @@ console.log(employees[0].age); //21
         // 1> making object
             const obj = {name: "Salik", age: 20, city: "Karachi"};
         // 2> adding new property
-            obj.phone = '03193634917';
+            obj.houseNo = 'kb-l18';
             console.log(obj);
+        // 3> updating property
+            obj.age = 21;
+            console.log(obj);
+            // 4> deleting property
+            delete obj.city;
+            console.log(obj);
+        // 5> make object in array apply loop on it and print values
+            const array = [
+                {name: "salik", age: 20, city: "karachi"},
+                {name:"abdul rehman", age:19, city: "karachi"}
+            ]
+            for(let i = 0; i < array.length; i++){
+                array[i].id = i;
+            }
+            console.log(array);
+            
