@@ -64,6 +64,12 @@ obj2 = {
     age1: '17'
 } 
 console.log({...obj1,...obj2})   //spread operator ...
+arr2 =[{...obj1},{...obj2}];
+console.log(arr2[1]);
+
+
+
+
 
 
 
@@ -78,6 +84,8 @@ console.log(employees[2]['age']); //22
 //updating object property in array
 employees[0].age = 21;
 console.log(employees[0].age); //21
+
+
 
  // Revision
         // 1> making object
