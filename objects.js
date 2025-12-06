@@ -53,6 +53,20 @@ console.log(student['Ali']['city']); //Lahore
 student.Ali.age = 22;
 console.log(student.Ali.age); //22
 
+
+//combining objects
+obj1 = {
+    name: 'Salik',
+    age: '16'
+}
+obj2 = {
+    name1: 'Ali',
+    age1: '17'
+} 
+console.log({...obj1,...obj2})   //spread operator ...
+
+
+
 // object in array
 let employees = [
     {name : 'Salik', age : 20},
@@ -98,4 +112,4 @@ console.log(employees[0].age); //21
             const newObj = {caste: "mughal", country: "pakistan"};
             array1[0] = {...array1[0], ...newObj}
            
-            console.log(array1);git
+            console.log(array1);

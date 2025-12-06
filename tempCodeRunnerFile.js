@@ -1,8 +1,12 @@
-   const array1 = [
-                {name: "salik", age: 20, city: "karachi"},
-                {name:"abdul rehman", age:19, city: "karachi"}
-            ]
-            const newObj = {caste: "mughal", country: "pakistan"};
-            // array1[0] = {...array1[0], ...newObj}; or
-            array1[0] += newObj;
-            console.log(array1);
+
+//combining objects
+obj1 = {
+    name: 'Salik',
+    age: '16'
+}
+obj2 = {
+    name1: 'Ali',
+    age1: '17'
+} 
+console.log({...obj1,...obj2})   //spread operator ...
+
