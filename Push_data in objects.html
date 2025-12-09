@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="fn">First Name: </label><input type="text" id="fn"><br>
+    <label for="ln">Last Name: </label><input type="text" id="ln"><br>
+   <label for="ct">City: </label> <input type="text" id="ct"><br>
+   <button onclick="main()">Submit</button>
+
+   <script>
+    let emptyArr = [];
+    let id = 0;
+    const main = () => {
+        let fn = document.getElementById('fn').value;
+        let ln = document.getElementById('ln').value;
+        let ct = document.getElementById('ct').value;
+        let input = {id:`${++id}`, firstName:`${fn}`, lastName: `${ln}` , city: `${ct}` };
+        emptyArr.push(input);
+        console.log(emptyArr);
+        
+    };
+
+   </script>
+</body>
+</html>

@@ -121,3 +121,5 @@ console.log(employees[0].age); //21
             array1[0] = {...array1[0], ...newObj}
            
             console.log(array1);
+
+            
