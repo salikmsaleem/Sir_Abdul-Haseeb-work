@@ -54,6 +54,12 @@
         let par = document.getElementById('pp');
 
         let emptyArr = [];
+        const loop = (emptyArr)=>{
+                            par.innerHTML = "";
+                emptyArr.filter((val, ind) => {
+                    par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td><button  onclick="del(${ind})">Delete</button> </td></tr>`;
+                })
+        }
         const main = () => {
 
             let fn = document.getElementById('fn').value;
@@ -64,52 +70,55 @@
             let ex = emptyArr.some(user => user.firstName === fn);
             let ex1 = emptyArr.some(user => user.lastName === ln);
             let ex2 = emptyArr.some(user => user.city === ct);
-
+            
             let exist = ex && ex1 && ex2;
             let empt = fn != '' && ln != '' && ct != '';
-
-
+            
+            
             console.log(exist)
             if (empt && !exist) {
                 id++;
-                
                 emptyArr.push(input);
-                par.innerHTML = "";
-                // console.log(emptyArr);
-                emptyArr.filter((val, ind) => {
-                    par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td><button  onclick="del(${ind})">Delete</button> </td></tr>`;
-                })
+                loop(emptyArr);
+                
             }else{
                 alert((!empt)?'Fillout All data' : 'Data Olready exist');
             }
         };
-
+        
         const del = (ind) => {
             flag = confirm("Are uh Sure");
             if (flag) {
-
-                par.innerHTML = ""
+                
                 emptyArr = emptyArr.filter((j, index) => index != ind)
-                emptyArr.filter((val, ind) => {
-                    par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td><button  onclick="del(${ind})">Delete</button> </td><tr>`;
-                })
+                loop(emptyArr)
             }
-
+            
         }
         const Update = (ind) => {
-            emptyArr[ind].firstName = prompt('enter ur First name');
-            emptyArr[ind].lastName = prompt('enter ur Last name');
-            emptyArr[ind].city = prompt('enter ur city name');
-            par.innerHTML = ""
-            emptyArr.filter((val, ind) => {
-                par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td><button  onclick="del(${ind})">Delete</button> </td><tr>`;
-            })
-
+            let fn = prompt('enter ur First name');
+            let ln = prompt('enter ur Last name');
+            let ct = prompt('enter ur city name');
+            let ex = emptyArr.some(user => user.firstName === fn);
+            let ex1 = emptyArr.some(user => user.lastName === ln);
+            let ex2 = emptyArr.some(user => user.city === ct);
+            let exist = ex && ex1 && ex2;
+            let empt = fn != '' && ln != '' && ct != '';
+            if (empt && !exist) {
+                
+                emptyArr[ind].firstName = fn
+                emptyArr[ind].lastName = ln;
+                emptyArr[ind].city = ct;
+                loop(emptyArr)
+            }else{
+                alert((!empt)?'Fillout All data' : 'Data Olready exist');
+            }
+            
         }
-
-
-
-
+        
+        
+        
+        
     </script>
 </body>
 
