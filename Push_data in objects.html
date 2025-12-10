@@ -50,7 +50,7 @@
         <tbody id="pp"></tbody>
     </table>
     <script>
-        let id = 0;
+        let id = 1;
         let par = document.getElementById('pp');
 
         let emptyArr = [];
@@ -59,7 +59,7 @@
             let fn = document.getElementById('fn').value;
             let ln = document.getElementById('ln').value;
             let ct = document.getElementById('ct').value;
-            let input = { id: `${++id}`, firstName: `${fn}`, lastName: `${ln}`, city: `${ct}` };
+            let input = { id: `${id}`, firstName: `${fn}`, lastName: `${ln}`, city: `${ct}` };
 
             let ex = emptyArr.some(user => user.firstName === fn);
             let ex1 = emptyArr.some(user => user.lastName === ln);
@@ -71,10 +71,10 @@
 
             console.log(exist)
             if (empt && !exist) {
-
-                par.innerHTML = "";
-
+                id++;
+                
                 emptyArr.push(input);
+                par.innerHTML = "";
                 // console.log(emptyArr);
                 emptyArr.filter((val, ind) => {
                     par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td><button  onclick="del(${ind})">Delete</button> </td></tr>`;
