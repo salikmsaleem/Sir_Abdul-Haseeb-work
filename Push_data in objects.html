@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         td,
         th {
@@ -104,14 +105,14 @@
             let ex2 = emptyArr.some(user => user.city === ct);
             let exist = ex && ex1 && ex2;
             let empt = fn != '' && ln != '' && ct != '';
-            if (empt && !exist) {
+            if (empt && !exist && fn && ln && ct) {
                 
                 emptyArr[ind].firstName = fn
                 emptyArr[ind].lastName = ln;
                 emptyArr[ind].city = ct;
                 loop(emptyArr)
             }else{
-                alert((!empt)?'Fillout All data' : 'Data Olready exist');
+                alert((!fn || !ln || !ct)?'Fillout All data' : 'Data Olready exist');
             }
             
         }
