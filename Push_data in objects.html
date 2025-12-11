@@ -58,7 +58,7 @@
         const loop = (emptyArr)=>{
                             par.innerHTML = "";
                 emptyArr.filter((val, ind) => {
-                    par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td><button  onclick="del(${ind})">Delete</button> </td></tr>`;
+                    par.innerHTML += `<tr><td>${val.id}</td><td> ${val.firstName}</td> <td>${val.lastName} </td><td> ${val.city}</td> <td><button onclick="Update(${ind})">Update</button></td><td ><button  onclick="del(${ind})">Delete</button> </td></tr>`;
                 })
         }
         const main = () => {
