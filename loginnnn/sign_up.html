@@ -34,6 +34,20 @@
                 <legend><b>Confirm Password ---</b></legend>
                 <input type="password" id="confirm" placeholder="Confirm Password" required>
             </fieldset>
+            <fieldset class="pass-group">
+            <legend><b>Gender ---</b></legend>
+            <select name="gender" id="gender" required>
+                <option value="" disabled selected >Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </fieldset>
+            <fieldset class="pass-group">
+            <legend><b>Date of Birth ---</b></legend>
+            <input type="date" id="dob" name="dob" required>
+        </fieldset>
+
+
             <p class="accnt">Already have an account <a href="login.html">Log In</a></p>
             <p id="status"></p>
             <button type="submit">Sign Up</button>
@@ -59,11 +73,15 @@
             let status = document.getElementById('status');
             let arr = JSON.parse(localStorage.getItem('Data')) || [];
             
+
             const signup = (event) => {
                 event.preventDefault();
-                document.getElementById('status').innerHTML = ""
-                let Form = new FormData(event.target);
-                let data = Object.fromEntries(Form);
+                status.innerHTML = ""
+                if (document.getElementById('password').value == document.getElementById('confirm').value) {
+                    
+                    let Form = new FormData(event.target);
+                    let data = Object.fromEntries(Form);
+                console.log(data);
                 let exist = arr.some(user => data.email === user.email);
                 if(exist){
                     status.style.color = 'red';
@@ -71,7 +89,7 @@
                     return;
                 }
                 arr.push(data);
-               
+                
                 localStorage.setItem('Data',JSON.stringify(arr));
                 let exist2 = JSON.parse(localStorage.getItem('Data')).some(user1 => data.email === user1.email);
                 if (exist2) {
@@ -80,6 +98,11 @@
                     
                     
                 }
+            }
+            else{
+                status.style.color = 'red';
+                status.innerHTML = "Password Doesn't match";
+            }
             }
 </script>
 </body>

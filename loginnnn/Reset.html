@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="parent" onsubmit="resetPass(event)" id="foorm">
+    <fieldset>
+        <legend class="leg"><h2> Reset Password</h2></legend>
+
+        <div class="child">
+
+            <fieldset class="pass-group">
+                <legend><b>Full Name ---</b></legend>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name" required>
+            </fieldset>
+
+            <fieldset class="pass-group">
+                <legend><b>Email ---</b></legend>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                <span id="mail">@gmail.com</span>
+            </fieldset>
+
+            <fieldset class="pass-group">
+                <legend><b>Gender ---</b></legend>
+                <select name="gender" id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </fieldset>
+            <fieldset class="pass-group">
+            <legend><b>Date of Birth ---</b></legend>
+            <input type="date" id="dob" name="dob" required>
+            </fieldset>
+
+            <button type="submit">Reset Password</button>
+
+            <p id="status"></p>
+        </div>
+    </fieldset>
+</form>
+
+
+
+<script>
+        document.getElementById('email').addEventListener('blur',function(){
+            if (this.value!= "" && !this.value.includes('@')) {
+                    document.getElementById('mail').innerHTML = "";
+                    this.value += '@gmail.com'
+                    
+                }
+                else{
+                    document.getElementById('mail').innerHTML = "@gmail.com";
+                }
+                if (this.value.includes('@gmail.com')) {
+                    document.getElementById('mail').innerHTML = "";
+            }
+            
+            }
+            )
+        
+
+
+            let status = document.getElementById('status');
+            let data;
+            let localData;
+
+    const resetPass = (event) => {
+        event.preventDefault();
+        form = new FormData(event.target);
+        data = Object.fromEntries(form);
+        localData = JSON.parse(localStorage.getItem('Data'));
+        console.log(data);
+        console.log(localData);
+        existFn = localData.some(user => user.fullName == data.fullname);
+        existEm = localData.some(user => user.email === data.email);
+        existGe = localData.some(user => user.gender === data.gender);
+        existDob = localData.some(user => user.dob === data.dob);
+        
+        if (existFn && existDob && existEm && existGe) {
+            document.getElementById('foorm').innerHTML = `<fieldset><legend class="leg"><h2> Set New Password</h2></legend><fieldset class="pass-group"><legend><b>New Password ---</b></legend><input type="password" id="newPass" name="newPass" placeholder="Enter New Password" required></fieldset><fieldset class="pass-group"><legend><b>Confirm Password ---</b></legend><input type="password" id="confirmPass" name="confirmPass" placeholder="Confirm Password" required></fieldset><button type="button" onclick="setNewPassword()">Set Password</button><p id="passStatus"></p></fieldset>`;
+            
+        }
+
+    }
+    const setNewPassword = () =>{
+        let conf1 = document.getElementById('newPass').value;
+        let conf2 = document.getElementById('confirmPass').value;
+        console.log(conf1);
+        console.log(conf2);
+        if (conf1 == conf2) {
+            let found = localData.find(obj => obj.email == data.email);
+
+            console.log(found);
+            found.password = conf1;
+            console.log(found);
+            localStorage.setItem('Data',JSON.stringify(localData));
+            alert('Password Changed Succesfully')
+            window.location.href = "login.html"
+        }
+        else{
+        alert("password doesn't match")
+        }
+
+
+    }
+</script>
+</body>
+</html>
