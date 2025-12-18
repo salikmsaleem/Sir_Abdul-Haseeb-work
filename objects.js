@@ -85,6 +85,20 @@ console.log(employees[2]['age']); //22
 employees[0].age = 21;
 console.log(employees[0].age); //21
 
+    // Getting values, keys and entries from object
+            let obj = {
+            name: "salik",
+            mail: "salikmsaleem@gmail.com",
+            isActive: true,
+            subjects: [1,2,3,4]
+
+        }
+        let keys = Object.keys(obj);
+        console.log(keys)
+        let val = Object.values(obj);
+        console.log(val);
+        let ent =  Object.entries(obj);
+        console.log(ent);
 
 
  // Revision
