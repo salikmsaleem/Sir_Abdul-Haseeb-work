@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="parent" onsubmit="signup(event)">
+    <fieldset>
+        <legend class="leg"><h2> Sign Up Form</h2></legend>
+
+        <div class="child">
+
+            <fieldset class="pass-group">
+                <legend><b>Full Name ---</b></legend>
+                <input type="text" id="fullname" name="fullName" placeholder="Enter Full Name" required>
+            </fieldset>
+
+            <fieldset class="pass-group">
+                <legend><b>Email ---</b></legend>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                <span id="mail">@gmail.com</span>
+            </fieldset>
+
+            <fieldset class="pass-group">
+                <legend><b>Password ---</b></legend>
+                <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                
+            </fieldset>
+
+            <fieldset class="pass-group">
+                <legend><b>Confirm Password ---</b></legend>
+                <input type="password" id="confirm" placeholder="Confirm Password" required>
+            </fieldset>
+            <p class="accnt">Already have an account <a href="login.html">Log In</a></p>
+            <p id="status"></p>
+            <button type="submit">Sign Up</button>
+        </div>
+    </fieldset>
+</form>
+<script>
+    document.getElementById('email').addEventListener('blur',function(){
+        if (this.value!= "" && !this.value.includes('@')) {
+            document.getElementById('mail').innerHTML = "";
+            this.value += '@gmail.com'
+            
+        }
+        else{
+            document.getElementById('mail').innerHTML = "@gmail.com";
+        }
+        if (this.value.includes('@gmail.com')) {
+            document.getElementById('mail').innerHTML = "";
+        }
+            
+            }
+            )
+            let status = document.getElementById('status');
+            let arr = JSON.parse(localStorage.getItem('Data')) || [];
+            
+            const signup = (event) => {
+                event.preventDefault();
+                document.getElementById('status').innerHTML = ""
+                let Form = new FormData(event.target);
+                let data = Object.fromEntries(Form);
+                let exist = arr.some(user => data.email === user.email);
+                if(exist){
+                    status.style.color = 'red';
+                    status.innerHTML = "Account Already Exist!"
+                    return;
+                }
+                arr.push(data);
+               
+                localStorage.setItem('Data',JSON.stringify(arr));
+                let exist2 = JSON.parse(localStorage.getItem('Data')).some(user1 => data.email === user1.email);
+                if (exist2) {
+                    status.style.color = 'green';
+                    status.innerHTML = "Registration Successful"
+                    
+                    
+                }
+            }
+</script>
+</body>
+</html>

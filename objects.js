@@ -24,6 +24,7 @@ console.log('city' in obj); // true
 for (let key in obj){
     console.log(key + ": " + obj[key]);       //key and value
 }
+
 //deleting entire object data
 for (let key in obj){
     delete obj[key];

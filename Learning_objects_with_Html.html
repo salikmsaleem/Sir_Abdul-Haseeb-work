@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .salik{
+            height: 100vh;
+            width: 100vw;
+    border:1px solid black; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+form, .parent{
+    height: 98%;
+    width: 50%;
+    /* margin: auto; */
+    border-radius: 10%;
+    }
+form{
+    display: flex;
+    background-color: blanchedalmond;
+    align-items: center;
+    justify-content: center; 
+    box-shadow: rgb(111, 103, 90) 5px 14px 20px 4px; 
+    
+    
+}
+h2{
+    text-align: center;
+}
+/* input::placeholder {
+    color: #fff;
+} */
+.parent{
+    background: coral;
+    height: 50%;
+    /* display: flex; */
+    /* justify-content: center;
+    text-decoration: underline; */
+    
+}
+.inner{
+    border-radius: 20%;
+    height: 30px;
+    margin-top: 20px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    }
+    .inner1{
+    margin-top: 30px;
+    position: relative;
+    
+}
+button{
+    margin-top: 20px;
+    padding: 10px 40px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 3px 3px 6px 0px gray;
+    font-size: 15px;
+    
+}
+.salik2{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    
+font-size: 15px;
+    height: 25px;
+    /* min-width: 1%; 
+    max-width: 100%;  */
+    background-color: transparent;
+    border: none;
+    outline: none;
+    /* text-align: center; */
+    color: antiquewhite;
+    }
+    
+    span{
+    position: absolute;
+    right: 10%;
+    color: antiquewhite;
+    }
+</style>
+</head>
+<body>
+    <div class="salik">
+        <form onsubmit="main(event)">
+            <fieldset class="parent">
+                <h2>Create an account</h2>
+                <fieldset class="inner1 inner"><legend><b>Email</b></legend>
+                <input name="email" type="text" placeholder="example@gmail.com">
+                <span>@gmail.com</span>
+            </fieldset>
+            <fieldset class="inner2 inner"><legend><b>Password</b></legend>
+                <input name="password" type="password">
+                
+                </fieldset>
+                <div class="salik2">
+                    <input type="submit" value="Submit">
+                    <button type="submit">Sign up</button></div>
+                    <!-- <input type="submit" > -->
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        // let obj = {
+        //     name: "salik",
+        //     mail: "salikmsaleem@gmail.com",
+        //     isActive: true,
+        //     subjects: [1,2,3,4]
+
+        // }
+        // let keys = Object.keys(obj);
+        // console.log(keys)
+        // let val = Object.values(obj);
+        // console.log(val);
+        // let ent =  Object.entries(obj);
+        // console.log(ent);
+        // //1st method 
+        // for(const keys  in obj){
+        //     console.log(keys , obj[keys])
+        // }
+
+        // //2nd method
+        // for([key,val] of Object.entries(obj)){
+        //     console.log(key , val);
+        // }
+
+        // //3rd method
+        // Object.entries(obj).forEach(([k,v])=>console.log(k,v));
+        
+
+        function main(event) {
+            event.preventDefault();
+            let formdata = new FormData(event.target);
+            
+            let obj = Object.fromEntries(formdata);
+            // console.log(obj)
+
+            for([key,val] of Object.entries(obj)){
+                localStorage.setItem(key,val);
+            }
+        }
+    </script>
+
+</body>
+</html>
