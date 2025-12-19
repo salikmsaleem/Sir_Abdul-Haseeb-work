@@ -8,32 +8,6 @@ body {
     height: 100vh;
 }
 
-input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #333;
-    background: transparent;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s ease;
-}
-
-input[type="date"]:focus {
-    border-bottom-color: #007bff;
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #333;
-    background: transparent;
-    font-size: 15px;
-    outline: none;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
 
 select:focus {
     border-bottom-color: #007bff;
@@ -67,6 +41,7 @@ fieldset {
     border: 1px solid #ddd;
     border-radius: 12px;
     background: #fafafa;
+    
 }
 
 input[type="email"],
@@ -79,6 +54,10 @@ input[type="text"] {
     background: transparent;
     font-size: 15px;
     transition: 0.3s ease;
+}
+.cont1{
+    display: flex;
+    justify-content: space-between;
 }
 
 input[type="email"]:focus,
@@ -130,3 +109,30 @@ p{
     font-size: 14px;
     margin: 0 0 10px 15px;
 }
+
+    input[type="date"] {
+        width:100% ;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid #333;
+        background: transparent;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s ease;
+    }
+    
+    input[type="date"]:focus {
+        border-bottom-color: #007bff;
+    }
+    
+    select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid #333;
+        background: transparent;
+        font-size: 15px;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }

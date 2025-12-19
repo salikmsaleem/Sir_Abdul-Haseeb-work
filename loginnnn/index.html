@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body{
+            position: relative;
+        } */
+        #body{
+            display: flex;
+            width: 98vw;
+            
+            display: flex;
+            right: right;
+            justify-content: right;
+            align-items: flex-start;
+        }
+        button{
+            padding: 10px 30px;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            background-color: bisque;
+            margin: 5px;
+            transition-duration: .2s;
+        }
+        button:hover{
+            color: white;
+            font-weight: bolder;
+            background-color: blue;
+        }
+        #main{
+            height: 90vh;
+            width: 98vw;
+        }
+    </style>
+    
+</head>
+<body >
+    <span id="body">
+        <a href="login.html"><button>Log in</button></a>
+        <a href="sign_up.html"><button>Sign up</button></a>
+    </span>
+    <div id="main"></div>
+
+    <script>
+        arr = JSON.parse(localStorage.getItem('Data'))
+        console.log(arr)
+
+        let acc = arr.find(obj => obj.flag == true)
+        console.log(acc)
+        if (acc) {
+            document.getElementById('body').innerHTML = `<button onclick="logout()"  >Logout</button>`
+            document.getElementById('main').innerHTML = `<h1>Welcome ${acc.fullName}</h1>
+            <h2>Your Account Information</h2>
+            <p>Your Full Name :  ${acc.fullName}</p>
+            <p>Email :  ${acc.email}</p>
+            <p>Gender :  ${acc.gender}</p>
+            <p>Date of Birth :  ${acc.dob}</p>
+            `;
+        }
+        const logout = () => {
+            acc.flag = false;
+            localStorage.setItem('Data',JSON.stringify(arr));
+            location.reload();
+            
+        }
+
+    </script>
+</body>
+</html>

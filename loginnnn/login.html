@@ -66,16 +66,30 @@
             let mailExist = arr.some(stg => stg.email === obj.email);
             let passExist = arr.some(stg => stg.password === obj.password);
             if (mailExist && passExist) {
+                let flag1 = arr.find(user => user.email === obj.email)
+                flag1.flag = true ;
+                localStorage.setItem('Data',JSON.stringify(arr));
+                
                 status.style.color = 'green'
                 status.innerHTML = 'Logging in';
-                            setTimeout(() => {
-                window.location.href = "https://www.youtube.com";
+                
+                setTimeout(() => {
+                    window.location.href = "index.html";
                 }, 1500);
+                
+            }
+            else if(mailExist){
+                let flag1 = arr.find(user => user.email === obj.email)
+                flag1.flag = false ;
+                localStorage.setItem('Data',JSON.stringify(arr));
+                
+                status.style.color = 'red'
+                status.innerHTML = "Incorrect Password";
             }
             else{
                 status.style.color = 'red'
                 status.innerHTML = "Account Doesn't found";
-            
+                
             }
             
 

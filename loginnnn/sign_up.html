@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        form.parent{
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pass-group{
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <form class="parent" onsubmit="signup(event)">
@@ -12,18 +23,21 @@
         <legend class="leg"><h2> Sign Up Form</h2></legend>
 
         <div class="child">
+            <div class="cont1">
 
             <fieldset class="pass-group">
                 <legend><b>Full Name ---</b></legend>
                 <input type="text" id="fullname" name="fullName" placeholder="Enter Full Name" required>
             </fieldset>
-
-            <fieldset class="pass-group">
-                <legend><b>Email ---</b></legend>
-                <input type="email" id="email" name="email" placeholder="Enter Email" required>
-                <span id="mail">@gmail.com</span>
-            </fieldset>
-
+            
+                <fieldset class="pass-group">
+                    <legend><b>Email ---</b></legend>
+                    <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                    <span id="mail">@gmail.com</span>
+                </fieldset>
+            </div>
+            
+            <div class="cont1">
             <fieldset class="pass-group">
                 <legend><b>Password ---</b></legend>
                 <input type="password" name="password" id="password" placeholder="Enter Password" required>
@@ -34,6 +48,8 @@
                 <legend><b>Confirm Password ---</b></legend>
                 <input type="password" id="confirm" placeholder="Confirm Password" required>
             </fieldset>
+            </div>
+            <div class="cont1">
             <fieldset class="pass-group">
             <legend><b>Gender ---</b></legend>
             <select name="gender" id="gender" required>
@@ -46,7 +62,7 @@
             <legend><b>Date of Birth ---</b></legend>
             <input type="date" id="dob" name="dob" required>
         </fieldset>
-
+        </div>
 
             <p class="accnt">Already have an account <a href="login.html">Log In</a></p>
             <p id="status"></p>
@@ -81,7 +97,8 @@
                     
                     let Form = new FormData(event.target);
                     let data = Object.fromEntries(Form);
-                console.log(data);
+                    data.flag = false;
+                    console.log(data);
                 let exist = arr.some(user => data.email === user.email);
                 if(exist){
                     status.style.color = 'red';
