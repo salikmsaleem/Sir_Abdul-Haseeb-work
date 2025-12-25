@@ -5,24 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* body{
-            position: relative;
-        } */
-        #body{
-            display: flex;
-            width: 98vw;
-            
-            display: flex;
-            right: right;
-            justify-content: right;
-            align-items: flex-start;
+        *{
+            margin: 0;
+            padding: 0;
         }
+        body{
+            /* display: flex; */
+            position: relative;
+        }
+        #nav , #main , aside{
+            background-color: rgb(208, 201, 201);
+            border-radius: 10px;
+        }
+        #nav{
+            height: 16vh;
+            width: 99vw;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            
+        }
+        #button{
+            float: left;
+            position: absolute;
+            right: 2vh;
+            top: 10px;
+        }
+
         button{
             padding: 10px 30px;
             border-radius: 10px;
+                        box-shadow: -14px 10px 20px 1px gray;
+
             outline: none;
             border: none;
-            background-color: bisque;
+            background-color: rgb(143, 141, 138);
             margin: 5px;
             transition-duration: .2s;
         }
@@ -32,41 +51,80 @@
             background-color: blue;
         }
         #main{
-            height: 90vh;
-            width: 98vw;
+            height: 83.8vh;
+            width: 78.5vw;
+            float: left;
         }
+        aside{
+            position: relative;
+            float: left;
+            height: 83.8vh;
+            width: 20vw;
+        }
+        section{
+            display: flex;
+            margin-top: 1px;
+            justify-content: space-evenly;
+        }
+        img{
+            float: left;
+        }
+        .profile{
+            position: absolute;
+            font-size: xx-large;
+            margin:  2%;
+        }
+        .profiles{
+            height: 50px;
+            border-radius: 10px;
+            border-bottom: 1px solid gray;
+            box-shadow: -14px 10px 20px 1px gray;
+            
+        }
+        .logod{
+            height: 16vh;
+            /* float: left; */
+        }
+        .logo{
+            height: 16vh;
+            /* position: absolute; */
+            /* margin: -3vh 0 0 0; */
+        }
+        .para{
+            word-spacing: 8px;
+            text-shadow: 1px 1px;
+            letter-spacing: 2px;
+            color: rgb(79, 75, 75);
+        }
+
     </style>
     
 </head>
 <body >
-    <span id="body">
+    <nav id="nav">
+        <!-- <span class="logod"> -->
+            <img class="logo" src="Gemini_Generated_Image_axnu2caxnu2caxnu-removebg-preview.png" alt="">
+        <!-- </span> -->
+        <div class="head">
+        <h2></h2>
+        <p class="para"></p>
+        </div>
+        <div id="button">
         <a href="login.html"><button>Log in</button></a>
         <a href="sign_up.html"><button>Sign up</button></a>
-    </span>
-    <div id="main"></div>
+        </div>
+    </nav>
+    <section>
+    <aside>
+        <div class="profiles">
+        <img src="profile-icon-design-free-vector-removebg-preview.png" height="50px" alt="">
+        <span class="profile">Profiles</span>
+        </div>
+    </aside>
+    <main id="main"></main>
+</section>
+    <script src="index.js">
 
-    <script>
-        arr = JSON.parse(localStorage.getItem('Data'))
-        console.log(arr)
-
-        let acc = arr.find(obj => obj.flag == true)
-        console.log(acc)
-        if (acc) {
-            document.getElementById('body').innerHTML = `<button onclick="logout()"  >Logout</button>`
-            document.getElementById('main').innerHTML = `<h1>Welcome ${acc.fullName}</h1>
-            <h2>Your Account Information</h2>
-            <p>Your Full Name :  ${acc.fullName}</p>
-            <p>Email :  ${acc.email}</p>
-            <p>Gender :  ${acc.gender}</p>
-            <p>Date of Birth :  ${acc.dob}</p>
-            `;
-        }
-        const logout = () => {
-            acc.flag = false;
-            localStorage.setItem('Data',JSON.stringify(arr));
-            location.reload();
-            
-        }
 
     </script>
 </body>
